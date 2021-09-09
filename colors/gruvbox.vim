@@ -116,7 +116,7 @@ let s:gb.bright_aqua    = ['#8ec07c', 108]     " 142-192-124
 let s:gb.bright_orange  = ['#fe8019', 208]     " 254-128-25
 
 let s:gb.neutral_red    = ['#cc241d', 124]     " 204-36-29
-let s:gb.neutral_green  = ['#98971a', 106]     " 152-151-26
+let s:gb.neutral_green  = ['#a6a51c', 106]     " 152-151-26
 let s:gb.neutral_yellow = ['#d79921', 172]     " 215-153-33
 let s:gb.neutral_blue   = ['#458588', 66]      " 69-133-136
 let s:gb.neutral_purple = ['#b16286', 132]     " 177-98-134
@@ -368,6 +368,13 @@ if exists('g:gruvbox_italicize_strings')
   endif
 endif
 
+let s:faded_strings = 0
+if exists('g:gruvbox_faded_strings')
+  if g:gruvbox_faded_strings == 1
+    let s:faded_strings = 1
+  endif
+endif
+
 " }}}
 " Highlighting Function: {{{
 
@@ -614,7 +621,11 @@ hi! link Constant GruvboxPurple
 hi! link Character GruvboxPurple
 " String constant: "this is a string"
 if g:gruvbox_improved_strings == 0
-  call s:HL('String',  s:green, s:none, s:italicize_strings)
+  if s:faded_strings == 1
+    call s:HL('String',  s:gb.neutral_green, s:none, s:italicize_strings)
+  else
+    call s:HL('String',  s:green, s:none, s:italicize_strings)
+  endif
 else
   call s:HL('String',  s:fg1, s:bg1, s:italicize_strings)
 endif
