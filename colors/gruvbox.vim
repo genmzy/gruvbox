@@ -581,7 +581,7 @@ else
 endif
 
 call s:HL('Comment', s:gray, s:none, s:italicize_comments)
-call s:HL('Todo', s:vim_fg, s:vim_bg, s:bold . s:italic)
+call s:HL('Todo', s:fg4_256, s:none, s:bold . s:italicize_comments)
 call s:HL('Error', s:red, s:vim_bg, s:bold . s:inverse)
 
 " Generic statement
@@ -602,7 +602,11 @@ hi! link Keyword GruvboxRed
 " Variable name
 hi! link Identifier GruvboxBlue
 " Function name
-hi! link Function GruvboxGreenBold
+if exists('g:gruvbox_func_bold') && g:gruvbox_func_bold == 1
+  hi! link Function GruvboxGreenBold
+else
+  hi! link Function GruvboxGreen
+endif
 
 " Generic preprocessor
 hi! link PreProc GruvboxAqua
