@@ -544,6 +544,8 @@ hi! link ModeMsg GruvboxYellowBold
 hi! link Question GruvboxOrangeBold
 " Warning messages
 hi! link WarningMsg GruvboxRedBold
+" Quick fix line
+hi! link QuickFixLine GruvboxPurple
 
 " }}}
 " Gutter: {{{
