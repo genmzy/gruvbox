@@ -90,7 +90,9 @@ let s:gb.dark0_hard  = ['#1d2021', 234]     " 29-32-33
 let s:gb.dark0       = ['#282828', 235]     " 40-40-40
 let s:gb.dark0_soft  = ['#32302f', 236]     " 50-48-47
 let s:gb.dark1       = ['#3c3836', 237]     " 60-56-54
+let s:gb.dark1_hard  = s:gb.dark0
 let s:gb.dark2       = ['#504945', 239]     " 80-73-69
+let s:gb.dark2_hard  = s:gb.dark0_soft
 let s:gb.dark3       = ['#665c54', 241]     " 102-92-84
 let s:gb.dark4       = ['#7c6f64', 243]     " 124-111-100
 let s:gb.dark4_256   = ['#7c6f64', 243]     " 124-111-100
@@ -175,8 +177,13 @@ if s:is_dark
     let s:bg0  = s:gb.dark0_hard
   endif
 
-  let s:bg1  = s:gb.dark1
-  let s:bg2  = s:gb.dark2
+  if g:gruvbox_contrast_dark == 'hard'
+    let s:bg1  = s:gb.dark1_hard
+    let s:bg2 = s:gb.dark2_hard
+  else
+    let s:bg1  = s:gb.dark1
+    let s:bg2  = s:gb.dark2
+  endif
   let s:bg3  = s:gb.dark3
   let s:bg4  = s:gb.dark4
 
@@ -508,7 +515,9 @@ if version >= 703
   call s:HL('CursorLineNr', s:yellow, s:bg1)
 endif
 
-hi! link NonText GruvboxBg2
+" highlight of lcs-eol
+hi! link NonText GruvboxBg3
+" highlight of lcs-whitespace
 hi! link SpecialKey GruvboxBg2
 
 call s:HL('Visual',    s:none,  s:bg3, s:invert_selection)
@@ -546,6 +555,8 @@ hi! link Question GruvboxOrangeBold
 hi! link WarningMsg GruvboxRedBold
 " Quick fix line
 hi! link QuickFixLine GruvboxPurple
+" White Space
+hi! link Whitespace GruvboxBg3
 
 " }}}
 " Gutter: {{{
