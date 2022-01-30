@@ -291,7 +291,7 @@ if has('nvim')
   let g:terminal_color_3 = s:gb.neutral_yellow[0]
   let g:terminal_color_11 = s:yellow[0]
 
-  let g:terminal_color_4 = s:gb.neutral_blue[0]
+  let g:terminal_color_4 = s:blue[0]
   let g:terminal_color_12 = s:blue[0]
 
   let g:terminal_color_5 = s:gb.neutral_purple[0]
